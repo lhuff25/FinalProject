@@ -44,19 +44,24 @@ public class Loan {
 
 	public double GetPMT() {
 		double PMT = 0;
-		//TODO: Execute PMT function to determine payment with given rate, nbr of payments, PV, FV, compounding)
+		PMT = FinanceLib.pmt(InterestRate, LoanPaymentCnt, LoanAmount, LoanBalanceEnd, bCompoundingOption); 
 		return PMT;
 	}
 
 	public double getTotalPayments() {
-		//TODO: Return the total payments for the loan
 		double tot = 0;
+		for(int i = 0; i < loanPayments.size(); i++) {
+			tot += loanPayments.get(i).getPayment(); 
+		}
 		return tot;
 	}
 
 	public double getTotalInterest() {
-		//TODO: Return the total interest for the loan
 		double interest = 0;
+		for(int i = 0; i < loanPayments.size(); i++) {
+		double loanInt = loanPayments.get(i).getInterestPayment();
+			interest += loanInt; 
+		}
 		return interest;
 	}
 
